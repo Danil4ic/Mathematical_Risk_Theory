@@ -1,0 +1,89 @@
+
+#include <iostream>
+#include <math.h>
+
+    using namespace std;
+
+  //variant 5
+
+    int main()
+    {
+        double x1, x2, x3;
+        double y1, y2, y3;
+        double z1, z2, z3;
+        double p1, p2, p3, S, S1, S2, S3;
+        cout << "Enter first string" << endl;
+        cin >> x1 >> x2 >> x3;
+        cout << "Enter second string" << endl;
+        cin >> y1 >> y2 >> y3;
+        cout << "Enter third string" << endl;
+        cin >> z1 >> z2 >> z3;
+
+        //Vald criterion
+        double m[3] = { x1, x2, x3 };
+        double min = m[0];
+        for (int i = 0; i < 3; ++i)
+        {
+            if (m[i] < min)
+            {
+                min = m[i];
+
+            }
+        }
+
+        double m1[3] = { y1, y2, y3 };
+        double min1 = m1[0];
+        for (int i = 0; i < 3; ++i)
+        {
+            if (m1[i] < min1)
+            {
+                min1 = m1[i];
+
+            }
+        }
+
+        double m2[3] = { z1, z2, z3 };
+        double min2 = m2[0];
+        for (int i = 0; i < 3; ++i)
+        {
+            if (m2[i] < min2)
+            {
+                min2 = m2[i];
+
+            }
+        }
+        double ma[3] = { min, min1, min2};
+        double max = ma[0];
+
+        for (int i = 0; i < 3; ++i) {
+            if (ma[i] > max) {
+                max = ma[i];
+            }
+        }
+        cout << "Min1 = " << min << " " << "Min2 = " << min1 << " " << "Min3 = " << min2 << endl;
+        cout << " Optimal decision is: " << max << endl;
+        //Fishbern criterion 
+        double n;
+        cout << "Enter n:" << endl;
+        cin >> n;
+        p1 = (pow(2, n - 1)) / (pow(2, n) - 1);
+        p2 = (pow(2, n - 2)) / (pow(2, n) - 1);
+        p3 = (pow(2, n - 3)) / (pow(2, n) - 1);
+        S = p1 + p2 + p3;
+        cout << "S = " << S << endl;
+        S1 = p1 * x1 + p2 * x2 + p3 * x3;
+        S2 = p1 * y1 + p2 * y2 + p3 * y3;
+        S3 = p1 * z1 + p2 * z2 + p3 * z3;
+        double maa[3] = { S1, S2, S3 };
+        double maxx = maa[0];
+
+        for (int i = 0; i < 3; ++i) {
+            if (maa[i] > maxx) {
+                maxx = maa[i];
+            }
+        }
+        cout << "S1 = " << S1 << " " << "S2 = " << S2 << " " << "S3 = " << S3 << endl;
+        cout << " Optimal decision is: " << maxx << endl;
+
+
+    }
