@@ -1,0 +1,94 @@
+#include <iostream>
+#include <math.h>
+
+using namespace std;
+
+//variant 5
+int main()
+{
+    double M1, M2, M3, p1s, p1f, p2s, p2f, p3s,p3f, V1, V2, V3;
+    double prof1s, prof2s, prof3s, prof1f, prof2f, prof3f;
+    double sigma1, sigma2, sigma3, CV1, CV2, CV3, ssv1, ssv2, ssv3, csv1, csv2, csv3;
+
+    cout << "Enter probabilities of success :  " << endl;
+    cin >> p1s >> p2s >> p3s;
+    cout << "Enter probabilities of failure :  " << endl;
+    cin >> p1f >> p2f >> p3f;
+    cout << "Enter profits of succes:  " << endl;
+    cin >> prof1s >> prof2s >> prof3s;
+    cout << "Enter profits of failure:  " << endl;
+    cin >> prof1f >> prof2f >> prof3f;
+
+    M1 = p1s * prof1s + p1f * prof1f;
+    M2 = p2s * prof2s + p2f * prof2f;
+    M3 = p3s * prof3s + p3f * prof3f;
+    double m[3] = { M1, M2, M3 };
+    double max = m[0];
+
+    for (int i = 0; i < 3; ++i) {
+        if (m[i] > max) {
+            max = m[i];
+        }
+    }
+    cout <<  " M1: " << M1 <<" " <<"M2: " <<" " <<  M2 <<" " << "M3: " << M3 << endl;
+    cout << "Best choice is: " << max << endl;
+    V1 = (prof1s - M1) * p1s + (prof1f - M1) * p1f;
+    V2 = (prof2s - M2) * p2s + (prof2f - M2) * p2f;
+    V3 = (prof3s - M3) * p3s + (prof3f - M3) * p3f;
+    sigma1 = sqrt(V1);
+    sigma2 = sqrt(V2);
+    sigma3 = sqrt(V3);
+    double s[3] = { sigma1, sigma2, sigma3 };
+    double maxx = s[0];
+
+    for (int i = 0; i < 3; ++i) {
+        if (s[i] > maxx ) {
+            maxx = s[i];
+        }
+    }
+    double g[3] = { sigma1, sigma2, sigma3};
+    double min = g[0];
+    for (int i = 0; i < 3; ++i)
+    {
+        if (g[i] < min)
+        {
+            min = g[i];
+        }
+    }
+    CV1 = sigma1 / M1;
+    CV2 = sigma2 / M2;
+    CV3 = sigma3 / M3;
+    double k[3] = { sigma1, sigma2, sigma3 };
+    double mi = k[0];
+    for (int i = 0; i < 3; ++i)
+    {
+        if (k[i] < mi)
+        {
+            mi = k[i];
+        }
+    }
+    cout << " sigma1: " << sigma1 << " " << "sigma2: " << " " << sigma2 << " " << "sigma3: " << sigma3 << endl;
+    cout << "Worst choice is: " << maxx << endl;
+    cout << "Best choice is: " << min << endl;
+    cout << "Best choice is: " << mi << endl;
+    ssv1 = sqrt(pow(prof1f - M1, 2) * p1f);
+    ssv2 = sqrt(pow(prof2f - M2, 2) * p2f);
+    ssv3 = sqrt(pow(prof3f - M3,2) * p3f);
+    csv1 = ssv1 / M1;
+    csv2 = ssv2 / M2;
+    csv3 = ssv3 / M3;
+    double l[3] = { csv1, csv2, csv3 };
+    double mii = l[0];
+    for (int i = 0; i < 3; ++i)
+    {
+        if (l[i] < mii)
+        {
+            mii = l[i];
+        }
+    }
+
+    cout << " CSV1: " << csv1 << " " << "CSV2: " << " " << csv2 << " " << "CSV3: " << csv3 << endl;
+    cout << "Best  choice is: " << mii << endl;
+
+}
+
