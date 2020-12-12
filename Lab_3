@@ -1,0 +1,42 @@
+#include <iostream>
+#include <math.h>
+
+using namespace std;
+
+//variant 5
+
+int main()
+{
+    double sum, deposit, bank_profit;
+    double x_min, p, x_max, L, D, UL, pi;
+
+
+
+    //Task A
+    sum = 100;
+    deposit = (sum * 15) / 100;
+    bank_profit = sum + deposit;
+
+    //Task B 
+    x_min = 100;
+    x_max = 150;
+    p = 0.4;
+    L = (x_min + x_max) * p; 
+    UL = p * (2 * sqrt(x_min)) + p * (2 * sqrt(x_max));
+    D = pow(UL / 2, 2);
+    pi = L - D;
+    cout << " Spodivany vygrash: " << L << endl;
+    cout << " Spodivana korysnist: " << UL << endl;
+    cout << "Determinovany ekvivalent:  " << D << endl;
+    cout << " Premiya za ryzyk: " << pi << endl;
+    if (pi > deposit) {
+        cout << "You should invest your money!" << endl;
+    } 
+    else {
+        cout << "Save your money in bank!" << endl;
+
+    }
+    
+
+
+}
